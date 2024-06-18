@@ -122,3 +122,13 @@ When you're sending a pull request:
 - Review the documentation to make sure it looks good.
 - Follow the pull request template when opening a pull request.
 - For pull requests that change the API or implementation, discuss with maintainers first by opening an issue.
+
+# Initiall installation notes
+
+## Installing yarn
+
+```
+corepack enable                         # - enables corepack - the manager of a package managers bundled with npm :D
+corepack prepare yarn@3.6.1 --activate  # take the correct version from package.json
+asdf reshim                             # if you use asdf - update binaries symlinks
+```
