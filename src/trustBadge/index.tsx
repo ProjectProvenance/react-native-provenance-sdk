@@ -1,20 +1,35 @@
 import * as React from 'react';
 
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export default function TrustBadge() {
-  const onPress = () => Alert.alert('Tapped Provenance');
+  const [showWebview, setShowWebview] = React.useState(false);
+  const onPress = () => setShowWebview(true);
 
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View style={styles.trustBadge}>
-        <View style={styles.tick} />
-        <View style={styles.content}>
-          <Text style={styles.contentText}>Sustainability Claims</Text>
-          <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
-        </View>
+    <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableOpacity onPress={onPress}>
+          <View style={styles.trustBadge}>
+            <View style={styles.tick} />
+            <View style={styles.content}>
+              <Text style={styles.contentText}>Sustainability Claims</Text>
+              <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+
+      {showWebview && (
+        <View style={styles.webViewContainer}>
+          <WebView
+            source={{ uri: 'https://staging.provenance.org/brands/medik8' }}
+            style={{ flex: 1 }}
+          />
+        </View>
+      )}
+    </View>
   );
 }
 
@@ -55,5 +70,9 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 24,
     backgroundColor: '#08856C',
+  },
+  webViewContainer: {
+    flex: 2,
+    backgroundColor: 'gray',
   },
 });
