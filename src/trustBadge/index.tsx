@@ -1,16 +1,20 @@
 import * as React from 'react';
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 
 export default function TrustBadge() {
+  const onPress = () => Alert.alert('Tapped Provenance');
+
   return (
-    <View style={styles.trustBadge}>
-      <View style={styles.tick} />
-      <View style={styles.content}>
-        <Text style={styles.contentText}>Sustainability Claims</Text>
-        <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.trustBadge}>
+        <View style={styles.tick} />
+        <View style={styles.content}>
+          <Text style={styles.contentText}>Sustainability Claims</Text>
+          <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
