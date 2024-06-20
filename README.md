@@ -5,7 +5,11 @@ A library to add Provenance experiences into your mobile applications to validat
 ## Installation
 
 ```sh
-npm install react-native-provenance-sdk
+npx expo install react-native-webview@^13.10.3 		# install webview that should match the version of webviewe from the package
+npm install react-native-provenance-sdk --save      # Note, keep save it's important for linking
+# OR until available on npm
+# npm install ProjectProvenance/react-native-provenance-sdk --save
+npx expo run:android --no-build-cache 			    # ensures linking, after this `npx expo start` works as usual
 ```
 
 ## Usage
