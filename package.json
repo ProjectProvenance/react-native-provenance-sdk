@@ -78,7 +78,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-webview": "^13.10.3"
   },
   "workspaces": [
     "example"
@@ -156,8 +157,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "react-native-webview": "^13.10.3"
   }
 }
