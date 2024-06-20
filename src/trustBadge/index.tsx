@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 export default function TrustBadge() {
@@ -9,26 +9,33 @@ export default function TrustBadge() {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity onPress={onPress}>
-          <View style={styles.trustBadge}>
-            <View style={styles.tick} />
-            <View style={styles.content}>
-              <Text style={styles.contentText}>Sustainability Claims</Text>
-              <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
-            </View>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.trustBadge}>
+          <View style={styles.tick} />
+          <View style={styles.content}>
+            <Text style={styles.contentText}>Sustainability Claims</Text>
+            <Text style={styles.contentProvenanceLogo}>Provenance®</Text>
           </View>
-        </TouchableOpacity>
-      </View>
-
-      {showWebview && (
-        <View style={styles.webViewContainer}>
-          <WebView
-            source={{ uri: 'https://staging.provenance.org/brands/medik8' }}
-            style={{ flex: 1 }}
-          />
         </View>
-      )}
+      </TouchableOpacity>
+
+      <Modal
+        visible={showWebview}
+        transparent={true}
+        onRequestClose={() => setShowWebview(!showWebview)}
+        animationType="slide"
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.webViewContainer}>
+            {showWebview && (
+              <WebView
+                source={{ uri: 'https://staging.provenance.org/brands/medik8' }}
+                style={{ flex: 1 }}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -71,8 +78,22 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     backgroundColor: '#08856C',
   },
-  webViewContainer: {
-    flex: 2,
+  modalContainer: {
+    flex: 1,
+    margin: 10,
+    marginTop: 48,
     backgroundColor: 'gray',
+    borderRadius: 24,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 24,
+    elevation: 5,
+  },
+  webViewContainer: {
+    flex: 1,
   },
 });

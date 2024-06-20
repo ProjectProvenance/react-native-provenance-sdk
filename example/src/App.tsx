@@ -17,5 +17,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
     justifyContent: 'center',
+    marginTop: 30,
   },
 });
