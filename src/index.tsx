@@ -1,3 +1,4 @@
 import TrustBadge from './trustBadge';
+import { ProofPoint } from './bundle';
 
-export { TrustBadge };
+export { TrustBadge, ProofPoint };
